@@ -200,7 +200,6 @@ class glTF2ExportUserExtension:
 
     def gather_gltf_extensions_hook(self, gltf_root, export_settings):
         nodes = gltf_root.nodes
-        ids = []
         low_level_ids = {}
 
         # Find node indices from object(node) names.
@@ -208,6 +207,7 @@ class glTF2ExportUserExtension:
         # @TODO: It's inefficient. Any better and more efficient way?
 
         for node in nodes:
+            ids = []
             if node.extensions is None or glTF_extension_name not in node.extensions:
                 continue
             extension = node.extensions[glTF_extension_name]
