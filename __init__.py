@@ -200,7 +200,6 @@ class glTF2ExportUserExtension:
 
     def gather_gltf_extensions_hook(self, gltf_root, export_settings):
         nodes = gltf_root.nodes
-        ids = []
         low_level_ids = {}
 
         # Find node indices from object(node) names.
@@ -210,6 +209,7 @@ class glTF2ExportUserExtension:
         for node in nodes:
             if node.extensions is None or glTF_extension_name not in node.extensions:
                 continue
+            ids = []
             extension = node.extensions[glTF_extension_name]
             names = extension["names"]
             del extension["names"]
